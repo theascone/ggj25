@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwv0gxs8blh0l"]
+
+[ext_resource type="PackedScene" uid="uid://bpdxao1oh1o1u" path="res://scenes/bubble.tscn" id="1_wyawi"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Bubble" parent="." instance=ExtResource("1_wyawi")]
+position = Vector2(192, 0)
