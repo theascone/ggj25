@@ -16,10 +16,14 @@ func _physics_process(delta: float) -> void:
 	controlled.add_velocity(direction * acceleration * delta)
 
 func enumerate_bubbles():
+	
 	var bubbles = []
 	for child in get_node("/root/Root").get_children():
 		if child is Bubble:
 			bubbles.append(child)
+	var sort = func (a: Node2D, b: Node2D):
+		return a.position.x < b.position.x
+	bubbles.sort_custom(sort)
 	return bubbles
 	
 func index_of_bubble(bubbles, target):
