@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwv0gxs8blh0l"]
+[gd_scene load_steps=6 format=3 uid="uid://bwv0gxs8blh0l"]
 
 [ext_resource type="PackedScene" uid="uid://bpdxao1oh1o1u" path="res://scenes/bubble.tscn" id="1_wyawi"]
-[ext_resource type="PackedScene" uid="uid://bin1esr2i0gfc" path="res://scenes/player.tscn" id="2_y6y1y"]
+[ext_resource type="Script" path="res://scripts/spike.gd" id="2_t6odd"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_y6y1y"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_5n70l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87ar2"]
 
 [node name="Root" type="Node2D"]
 
@@ -18,3 +21,18 @@ format = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_5n70l")
+
+[node name="spike" type="Area2D" parent="."]
+position = Vector2(190, 154)
+script = ExtResource("2_t6odd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike"]
+shape = SubResource("RectangleShape2D_87ar2")
+
+[node name="Polygon2D" type="Polygon2D" parent="spike"]
+polygon = PackedVector2Array(-11, 10, -11, -11, 12, -11, 11, 10)
+
+[node name="Bubble2" parent="." instance=ExtResource("1_wyawi")]
+position = Vector2(519, 221)
+
+[connection signal="body_entered" from="spike" to="spike" method="_on_body_entered"]

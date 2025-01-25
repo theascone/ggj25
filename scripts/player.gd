@@ -13,7 +13,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	controlled.add_velocity(direction * acceleration * delta)
+	if controlled:
+		controlled.add_velocity(direction * acceleration * delta)
 
 func enumerate_bubbles():
 	
@@ -64,3 +65,17 @@ func _input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func handle_popped(bubble: Bubble) -> void:
+	print("handle_popped")
+	var bubbles = enumerate_bubbles()
+	if bubbles.size() == 1:
+		print("game over")
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		controlled = null
+		return
+	var idx = index_of_bubble(bubbles, controlled)
+	idx -= 1
+	if idx < 0:
+		idx = bubbles.size() - 1
+	controlled = bubbles[idx]
