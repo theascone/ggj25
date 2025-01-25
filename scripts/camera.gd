@@ -10,5 +10,5 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var player = get_node("/root/Root/Player").controlled
-	if player:
+	if player != null:
 		position = lerp(position, player.position, speed * delta)
