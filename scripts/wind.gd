@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var gust_scene: PackedScene
 @export var direction = Vector2(1, 0)
 @export var acceleration = 500.0 
 
@@ -34,14 +35,16 @@ func _on_body_exited(body: Node2D) -> void:
 		return
 	active_bubbles.erase(bubble)
 
-func wind_sprite_spawner(direction: int) -> void:
-	Rect2  = $CollisionShape2D.shape.get_rect()
-	print()
-	if direction == 1:
-		var spawn_vector = Vector2()
-		pass
-		
-
-
 func _on_spawn_timer_timeout() -> void:
-	wind_sprite_spawner(1)
+	var curve = $Path2D.curve
+	
+	#var max = 2000
+	#var rand = (Time.get_ticks_msec() % max) / float(max)
+	var rand = 0.5
+	var start = curve.samplef(rand * curve.point_count)
+	
+	var node = gust_scene.instantiate()
+	node.position = start + global_position
+	node.speed = direction * acceleration
+	node.rotation = direction.angle() + PI
+	get_node("/root/Root/").add_child(node)
