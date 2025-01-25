@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://bwv0gxs8blh0l"]
+[gd_scene load_steps=10 format=4 uid="uid://bwv0gxs8blh0l"]
 
 [ext_resource type="PackedScene" uid="uid://bpdxao1oh1o1u" path="res://scenes/bubble.tscn" id="1_wyawi"]
 [ext_resource type="Texture2D" uid="uid://dkrh610rgjisb" path="res://assets/tilesets/Tileset_basic.png" id="2_cgp5p"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_y6y1y"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_5n70l"]
+[ext_resource type="PackedScene" uid="uid://brfiglux2e12a" path="res://scenes/wind.tscn" id="3_m6x4c"]
 [ext_resource type="PackedScene" uid="uid://b3n2bfbnun145" path="res://scenes/enemy_stinger.tscn" id="5_olnlm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsve4"]
+size = Vector2(152, 664)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycmcb"]
 texture = ExtResource("2_cgp5p")
@@ -444,6 +448,13 @@ sources/1 = SubResource("TileSetAtlasSource_ycmcb")
 acceleration = 1200.0
 controlled = NodePath("../Bubble")
 bubble_scene = ExtResource("1_wyawi")
+
+[node name="Wind" parent="." instance=ExtResource("3_m6x4c")]
+direction = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wind"]
+position = Vector2(-596, 132)
+shape = SubResource("RectangleShape2D_gsve4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_5n70l")
