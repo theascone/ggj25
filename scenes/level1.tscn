@@ -1,130 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bwv0gxs8blh0l"]
+[gd_scene load_steps=6 format=3 uid="uid://bwv0gxs8blh0l"]
 
 [ext_resource type="PackedScene" uid="uid://bpdxao1oh1o1u" path="res://scenes/bubble.tscn" id="1_wyawi"]
 [ext_resource type="Script" path="res://scripts/spike.gd" id="2_t6odd"]
-[ext_resource type="PackedScene" uid="uid://bin1esr2i0gfc" path="res://scenes/player.tscn" id="2_y6y1y"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_y6y1y"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_5n70l"]
-[ext_resource type="Texture2D" uid="uid://d10bmui0oc2f3" path="res://assets/tilesets/green_borders_Zeichenfläche 1.svg" id="3_v24eh"]
-[ext_resource type="Texture2D" uid="uid://cm7yhu1u3kra1" path="res://assets/tilesets/developer_tileset-02.svg" id="4_o8wrh"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_022k1"]
-texture = ExtResource("3_v24eh")
-texture_region_size = Vector2i(32, 32)
-use_texture_padding = false
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-9:0/0 = 0
-10:0/0 = 0
-11:0/0 = 0
-12:0/0 = 0
-13:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-9:1/0 = 0
-10:1/0 = 0
-11:1/0 = 0
-12:1/0 = 0
-13:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-9:2/0 = 0
-10:2/0 = 0
-11:2/0 = 0
-12:2/0 = 0
-13:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-8:3/0 = 0
-9:3/0 = 0
-10:3/0 = 0
-11:3/0 = 0
-12:3/0 = 0
-13:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-9:4/0 = 0
-10:4/0 = 0
-11:4/0 = 0
-12:4/0 = 0
-13:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-8:5/0 = 0
-9:5/0 = 0
-10:5/0 = 0
-11:5/0 = 0
-12:5/0 = 0
-13:5/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y83o2"]
-texture = ExtResource("4_o8wrh")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_uh3u2"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_022k1")
-sources/1 = SubResource("TileSetAtlasSource_y83o2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87ar2"]
 
@@ -134,14 +13,11 @@ sources/1 = SubResource("TileSetAtlasSource_y83o2")
 position = Vector2(192, 0)
 
 [node name="Player" parent="." node_paths=PackedStringArray("controlled") instance=ExtResource("2_y6y1y")]
-controlled = NodePath("../Bubble")
 bubble_scene = ExtResource("1_wyawi")
+controlled = NodePath("../Bubble")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_uh3u2")
-rendering_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 131072, 0, 65535, 0, 0, 131071, 0, 2, 65536, 131072, 2, 65537, 196608, 0, 1, 196608, 0, -65535, 196608, 0, -65536, 196608, 0, -1, 196608, 0, -2, 196608, 0, 65534, 196608, 0, 131070, 196608, 0, 196606, 196608, 0, 196607, 196608, 0, 131072, 196608, 0, 131073, 196608, 0, -65538, 1, 0, -65537, 1, 0, -131072, 1, 0, -131071, 1, 0, -65534, 131073, 0, 2, 131073, 0, 65538, 131073, 0, 131074, 131073, 0, 262142, 196609, 0, 262143, 196609, 0, 196608, 196609, 0, 196609, 196609, 0, 262141, 327680, 2, 262140, 327680, 2, 262139, 327680, 2, 262138, 327680, 2, 262137, 262144, 2, 196601, 262144, 1, 131065, 262144, 1, 65529, 131072, 0, 65528, 65536, 0, 65527, 0, 0, 131063, 393216, 2, 131062, 327680, 2, 131064, 196608, 1, 196600, 196608, 1, 262136, 196608, 1, 262135, 196608, 1, 196599, 196608, 1, 196598, 196608, 1, 262134, 196608, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_5n70l")

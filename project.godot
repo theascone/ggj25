@@ -63,3 +63,7 @@ switch_right={
 [physics]
 
 2d/default_gravity=98.0
+
+[rendering]
+
+textures/webp_compression/lossless_compression_factor=0.0

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3n2bfbnun145"]
+
+[ext_resource type="Script" path="res://scripts/enemy_stinger.gd" id="1_8c3vp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11gld"]
+size = Vector2(73, 100)
+
+[node name="Stinger" type="CharacterBody2D"]
+script = ExtResource("1_8c3vp")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-46, -47, 47, -52, 14, 56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -1)
+shape = SubResource("RectangleShape2D_11gld")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
