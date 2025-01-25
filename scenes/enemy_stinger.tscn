@@ -1,18 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3n2bfbnun145"]
+[gd_scene load_steps=6 format=3 uid="uid://b3n2bfbnun145"]
 
 [ext_resource type="Script" path="res://scripts/enemy_stinger.gd" id="1_8c3vp"]
+[ext_resource type="Texture2D" uid="uid://c3bml3vy0vdbx" path="res://assets/enemies/bee/bee_body.svg" id="2_033l2"]
+[ext_resource type="Texture2D" uid="uid://c6fjody8xkicu" path="res://assets/enemies/bee/bee_face_mad.svg" id="3_mkrch"]
+[ext_resource type="Texture2D" uid="uid://dltdwbn78gmwu" path="res://assets/enemies/bee/bee_face_calm.svg" id="4_uho2t"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_11gld"]
-size = Vector2(73, 100)
+[sub_resource type="SpriteFrames" id="SpriteFrames_djs45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mkrch")
+}],
+"loop": true,
+"name": &"angry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_uho2t")
+}],
+"loop": true,
+"name": &"regular_smile",
+"speed": 5.0
+}]
 
 [node name="Stinger" type="CharacterBody2D"]
 script = ExtResource("1_8c3vp")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-46, -47, 47, -52, 14, 56)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, -1)
-shape = SubResource("RectangleShape2D_11gld")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.117188, 0.117187)
+texture = ExtResource("2_033l2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.117188, 0.117188)
+sprite_frames = SubResource("SpriteFrames_djs45")
+animation = &"angry"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-20, -58, -46, -21, -47, -5, -32, 23, 0, 54, 32, 25, 47, -5, 46, -20, 22, -58)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

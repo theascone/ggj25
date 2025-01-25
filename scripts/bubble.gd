@@ -14,6 +14,7 @@ func _ready():
 
 func add_velocity(velocity: Vector2):
 	self.velocity += velocity
+	$FaceAnimation.play("regular_smile")
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -25,6 +26,11 @@ func _physics_process(delta: float) -> void:
 
 	velocity = lerp(velocity, Vector2(0.0, 0.0), dampening * delta)
 
+	$FaceAnimation.offset.x += 0.1*clampf(velocity.x, -25.0, 25.0)
+	$FaceAnimation.offset.y += 0.1*clampf(velocity.y, -25.0, 25.0)
+	$FaceAnimation.offset.x = clampf($FaceAnimation.offset.x, -150.0, 150.0)
+	$FaceAnimation.offset.y = clampf($FaceAnimation.offset.y, -45.0, 45.0)
+
 	move_and_slide()
 	
 func update_surface(factor: float):
@@ -35,6 +41,7 @@ func update_surface(factor: float):
 		
 func pop() -> void:
 	#death_animation()
+	$FaceAnimation.play("dead")
 	var player = get_node("/root/Root/Player")
 	player.handle_popped(self)
 	queue_free()

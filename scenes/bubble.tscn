@@ -46,12 +46,12 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_t7f1k")
 }, {
-"duration": 0.07,
+"duration": 0.04,
 "texture": ExtResource("4_vyo77")
 }],
 "loop": true,
 "name": &"regular_smile",
-"speed": 0.1
+"speed": 0.2
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16syt"]
@@ -78,7 +78,7 @@ texture_filter = 1
 scale = Vector2(0.160156, 0.160156)
 sprite_frames = SubResource("SpriteFrames_wxma4")
 animation = &"regular_smile"
-frame_progress = 0.156807
+frame_progress = 0.540061
 
 [node name="SpikeArea" type="Area2D" parent="."]
 collision_layer = 2

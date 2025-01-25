@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dytctdr1u647g"]
+
+[ext_resource type="Script" path="res://scripts/sting_bullet.gd" id="1_gr5ch"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_gr5ch")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.666667, 1)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(3, 1, 0, -10, -3, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -11, -2, 0, 2, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
