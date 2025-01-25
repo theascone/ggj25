@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dytctdr1u647g"]
+[gd_scene load_steps=3 format=3 uid="uid://dytctdr1u647g"]
 
 [ext_resource type="Script" path="res://scripts/sting_bullet.gd" id="1_gr5ch"]
+[ext_resource type="Texture2D" uid="uid://ktd45g83c3rm" path="res://assets/enemies/bee/bee_just_stinger.svg" id="2_yeyau"]
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_gr5ch")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0449219, 0.0449219)
+texture = ExtResource("2_yeyau")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(0, -1)

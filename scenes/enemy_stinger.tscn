@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3n2bfbnun145"]
 
 [ext_resource type="Script" path="res://scripts/enemy_stinger.gd" id="1_8c3vp"]
-[ext_resource type="Texture2D" uid="uid://c3bml3vy0vdbx" path="res://assets/enemies/bee/bee_body.svg" id="2_033l2"]
+[ext_resource type="Texture2D" uid="uid://cyp7sujv7nwx8" path="res://assets/enemies/bee/bee_body_no_sting.svg" id="2_pabmj"]
 [ext_resource type="Texture2D" uid="uid://c6fjody8xkicu" path="res://assets/enemies/bee/bee_face_mad.svg" id="3_mkrch"]
 [ext_resource type="Texture2D" uid="uid://dltdwbn78gmwu" path="res://assets/enemies/bee/bee_face_calm.svg" id="4_uho2t"]
 
@@ -29,7 +29,7 @@ script = ExtResource("1_8c3vp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.117188, 0.117187)
-texture = ExtResource("2_033l2")
+texture = ExtResource("2_pabmj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.117188, 0.117188)

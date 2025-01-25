@@ -1,40 +1,64 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpdxao1oh1o1u"]
+[gd_scene load_steps=15 format=3 uid="uid://bpdxao1oh1o1u"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_u7v32"]
 [ext_resource type="Texture2D" uid="uid://ynqrfdvgr7oy" path="res://assets/Bubble/bubble_noface-04.png" id="2_m0o3s"]
+[ext_resource type="Texture2D" uid="uid://bjsd4ihem0xif" path="res://assets/Bubble/bubble_noface-04_pop1.png" id="3_cswsy"]
 [ext_resource type="Texture2D" uid="uid://b53f8tybqj58r" path="res://assets/animations/bubble_face/bubble_face_02_wink.svg" id="3_srrl2"]
+[ext_resource type="Texture2D" uid="uid://tns14nh35n0e" path="res://assets/Bubble/bubble_noface-04_pop2.png" id="4_ukv78"]
 [ext_resource type="Texture2D" uid="uid://csgpwj8r7jiru" path="res://assets/animations/bubble_face/bubble_face_04_dead.svg" id="4_vnl8q"]
 [ext_resource type="Texture2D" uid="uid://7v2pj1t1onpb" path="res://assets/animations/bubble_face/bubble_face_03_blush.svg" id="4_vyo77"]
 [ext_resource type="Texture2D" uid="uid://ugprp5dq0cul" path="res://assets/animations/bubble_face/bubble_face_01_normal.svg" id="5_t7f1k"]
+[ext_resource type="Texture2D" uid="uid://bvx8jm1re51e6" path="res://assets/Bubble/bubble_noface-04_pop3.png" id="5_vkew7"]
+[ext_resource type="Texture2D" uid="uid://lyjjb6gbku27" path="res://assets/Bubble/bubble_noface-04_pop4.png" id="6_xnhu3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3alvk"]
 radius = 64.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i3p6h"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_m0o3s")
+"texture": ExtResource("3_cswsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ukv78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vkew7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xnhu3")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"pop",
+"speed": 7.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wxma4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_srrl2")
+"texture": ExtResource("5_t7f1k")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_srrl2")
 }],
 "loop": true,
 "name": &"blink",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vnl8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vnl8q")
+}, {
 "duration": 1.0,
 "texture": ExtResource("4_vnl8q")
 }],
@@ -46,7 +70,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_t7f1k")
 }, {
-"duration": 0.04,
+"duration": 0.07,
 "texture": ExtResource("4_vyo77")
 }],
 "loop": true,
@@ -60,24 +84,24 @@ radius = 72.0
 [node name="Bubble" type="CharacterBody2D"]
 script = ExtResource("1_u7v32")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
-color = Color(0.901833, 0.69, 1, 1)
-polygon = PackedVector2Array(-64, 0, -56, 32, -32, 56, 0, 64, 32, 56, 56, 32, 64, 0, 56, -32, 32, -56, 0, -64, -32, -56, -56, -32)
-
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3alvk")
 
 [node name="BubbleAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.160156, 0.160156)
 sprite_frames = SubResource("SpriteFrames_i3p6h")
+animation = &"none"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.165854, 0.165854)
+texture = ExtResource("2_m0o3s")
 
 [node name="FaceAnimation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.160156, 0.160156)
 sprite_frames = SubResource("SpriteFrames_wxma4")
-animation = &"regular_smile"
-frame_progress = 0.540061
+animation = &"dead"
+frame_progress = 0.642785
 
 [node name="SpikeArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -91,5 +115,7 @@ shape = SubResource("CircleShape2D_16syt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MergeArea"]
 shape = SubResource("CircleShape2D_16syt")
 
+[connection signal="animation_finished" from="BubbleAnimation" to="." method="_on_bubble_animation_animation_finished"]
+[connection signal="animation_looped" from="BubbleAnimation" to="." method="_on_bubble_animation_animation_looped"]
 [connection signal="body_entered" from="SpikeArea" to="." method="_on_spike_body_entered"]
 [connection signal="body_entered" from="MergeArea" to="." method="_on_merge_area_body_entered"]

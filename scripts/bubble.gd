@@ -11,10 +11,11 @@ extends CharacterBody2D
 
 func _ready():
 	update_surface(1)
+	$BubbleAnimation.visible = false
+	$FaceAnimation.play("regular_smile")
 
 func add_velocity(velocity: Vector2):
 	self.velocity += velocity
-	$FaceAnimation.play("regular_smile")
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -40,15 +41,16 @@ func update_surface(factor: float):
 	scale.y = new_scale
 		
 func pop() -> void:
-	#death_animation()
+	print("pop")
 	$FaceAnimation.play("dead")
-	var player = get_node("/root/Root/Player")
-	player.handle_popped(self)
-	queue_free()
-
-func death_animation() -> void:
-	print("ded")
-
+	$Sprite2D.visible = false
+	$BubbleAnimation.visible = true
+	$BubbleAnimation.play("pop")
+	#$BubbleAnimation.stop()
+	
+	#var player = get_node("/root/Root/Player")
+	#player.handle_popped(self)
+	#queue_free()
 
 func _on_spike_body_entered(body) -> void:
 	pop()
@@ -74,3 +76,8 @@ func _on_merge_area_body_entered(body: Node2D) -> void:
 		
 	bubble.removing = true
 	bubble.queue_free()
+
+func _on_bubble_animation_animation_looped() -> void:
+	var player = get_node("/root/Root/Player")
+	player.handle_popped(self)
+	queue_free()
