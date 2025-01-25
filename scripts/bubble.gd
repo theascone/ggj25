@@ -9,6 +9,8 @@ extends CharacterBody2D
 
 @export var removing = false
 
+var not_dead = true
+
 func _ready():
 	update_surface(1)
 	$BubbleAnimation.visible = false
@@ -21,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not is_on_floor():
 	velocity += get_gravity() * delta
-
+	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity += Vector2(0.0, sin(Time.get_ticks_msec()*sine_frequency))
 
@@ -42,6 +44,9 @@ func update_surface(factor: float):
 		
 func pop() -> void:
 	print("pop")
+	var player = get_node("/root/Root/Player")
+	#player.dead = true
+	#player.controlled.velocity = Vector2(0.0, 0.0)
 	$FaceAnimation.play("dead")
 	$Sprite2D.visible = false
 	$BubbleAnimation.visible = true

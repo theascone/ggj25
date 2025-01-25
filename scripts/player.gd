@@ -9,6 +9,8 @@ extends Node2D
 
 var recently_created_bubbles = []
 
+var dead = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -19,6 +21,8 @@ func _process(delta: float):
 	recently_created_bubbles = recently_created_bubbles.filter(filter)
 
 func _physics_process(delta: float) -> void:
+	if dead:
+		return
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if controlled != null:
 		var vel = direction * acceleration * delta
@@ -43,6 +47,8 @@ func index_of_bubble(bubbles, target):
 	return i
 			
 func _input(event: InputEvent) -> void:
+	if dead:
+		return
 	if event.is_action_pressed("split"):
 		if controlled.surface < min_split_surface:
 			return
@@ -92,6 +98,7 @@ func handle_popped(bubble: Bubble) -> void:
 	if idx < 0:
 		idx = bubbles.size() - 1
 	controlled = bubbles[idx]
+	dead = false
 
 func bubble_recently_created(bubble: Bubble):
 	for recently in recently_created_bubbles:
