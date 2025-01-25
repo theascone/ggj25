@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var sine_frequency = 0.0035
 @export var surface = 10.0
 
+@export var removing = false
+
 func _ready():
 	update_surface(1)
 
@@ -22,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	velocity += Vector2(0.0, sin(Time.get_ticks_msec()*sine_frequency))
 
 	velocity = lerp(velocity, Vector2(0.0, 0.0), dampening * delta)
-	
+
 	move_and_slide()
 	
 func update_surface(factor: float):
@@ -46,14 +48,22 @@ func _on_spike_body_entered(body) -> void:
 
 
 func _on_merge_area_body_entered(body: Node2D) -> void:
+	var player = get_node("/root/Root/Player")
+
 	var bubble := body as Bubble
-	if bubble != null:
-		if bubble == self:
-			return
-		position = lerp(position, bubble.position, surface / (surface + bubble.surface))
-		surface += bubble.surface
-		var player = get_node("/root/Root/Player")
-		if player.controlled == bubble:
-			player.controlled = self
-			
-		bubble.queue_free()
+	if bubble == null or bubble == self:
+		return
+	if player.bubble_recently_created(bubble) or player.bubble_recently_created(self):
+		return
+	if removing or bubble.removing:
+		return
+
+	position = lerp(position, bubble.position, surface / (surface + bubble.surface))
+	surface += bubble.surface
+	update_surface(1)
+
+	if player.controlled == bubble:
+		player.controlled = self
+		
+	bubble.removing = true
+	bubble.queue_free()
