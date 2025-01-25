@@ -5,7 +5,8 @@ extends CharacterBody2D
 @export var dampening = 0.9
 @export var sine_amplitude = 250.0
 @export var sine_frequency = 0.0035
-@export var start_volume = 100.0
+@export var initial_surface = 100.0
+@export var surface = initial_surface
 
 func add_velocity(velocity: Vector2):
 	self.velocity += velocity
@@ -35,12 +36,12 @@ func _physics_process(delta: float) -> void:
 	#else:
 	#	velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-func shrink(shrink_val: float) -> void:
-	start_volume -= shrink_val
-
-func grow(grow_val: float) -> void:
-	start_volume += grow_val
-	
+func update_surface(factor: float):
+	surface *= factor
+	factor = sqrt(factor)
+	scale.x *= factor
+	scale.y *= factor
+		
 func pop() -> void:
 	#death_animation()
 	var player = get_node("/root/Root/Player")

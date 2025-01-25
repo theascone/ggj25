@@ -14,7 +14,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if controlled:
-		controlled.add_velocity(direction * acceleration * delta)
+		var vel = direction * acceleration * delta
+		controlled.add_velocity(vel)
 
 func enumerate_bubbles():
 	
@@ -42,7 +43,11 @@ func _input(event: InputEvent) -> void:
 		var place_dir = Vector2(1, 0)
 		if velocity.length() > 1e-5:
 			place_dir = velocity.normalized()
-			
+		
+		bubble.scale = controlled.scale
+		bubble.surface = controlled.surface
+		controlled.update_surface(0.5)
+		bubble.update_surface(0.5)
 		bubble.position = controlled.position - 2 * place_dir
 		controlled.position += 2 * place_dir
 		
