@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5i8bra1hq4dw"]
+[gd_scene load_steps=5 format=3 uid="uid://b5i8bra1hq4dw"]
 
 [ext_resource type="Script" path="res://scripts/door.gd" id="1_rpses"]
+[ext_resource type="AudioStream" uid="uid://blommh01cuw7f" path="res://assets/sounds/Door_close.wav" id="2_ihdbb"]
+[ext_resource type="AudioStream" uid="uid://rwollo23ykgd" path="res://assets/sounds/Door_open.wav" id="3_wm7hb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qldv4"]
 size = Vector2(32, 152)
@@ -14,3 +16,9 @@ shape = SubResource("RectangleShape2D_qldv4")
 [node name="Polygon2D" type="Polygon2D" parent="."]
 scale = Vector2(1, 1.1875)
 polygon = PackedVector2Array(-16, -64, -16, 64, 16, 64, 16, -64)
+
+[node name="Audio_Door_close" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ihdbb")
+
+[node name="Audio_Door_open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wm7hb")

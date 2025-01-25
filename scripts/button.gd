@@ -2,6 +2,9 @@ extends Area2D
 
 @export var min_surface = 1
 
+@onready var audio_button_press: AudioStreamPlayer = $Audio_Button_Press
+@onready var audio_button_release: AudioStreamPlayer = $Audio_Button_Release
+
 signal status_change(status)
 
 var bubbles = []
@@ -28,6 +31,10 @@ func maintain_button():
 	if should_activate != active:
 		active = should_activate
 		status_change.emit(active)
+		if active:
+			audio_button_press.play()
+		else:
+			audio_button_release.play()
 
 func _on_body_entered(body: Node2D) -> void:
 	var bubble := body as Bubble

@@ -9,6 +9,10 @@ extends CharacterBody2D
 
 @export var removing = false
 
+@onready var audio_bubble_split: AudioStreamPlayer = $Audio_Bubble_split
+@onready var audio_bubble_join: AudioStreamPlayer = $Audio_Bubble_join
+@onready var audio_bubble_pop: AudioStreamPlayer = $Audio_Bubble_pop
+
 var not_dead = true
 
 func _ready():
@@ -44,6 +48,7 @@ func update_surface(factor: float):
 		
 func pop() -> void:
 	print("pop")
+	audio_bubble_pop.play()
 	var player = get_node("/root/Root/Player")
 	#player.dead = true
 	#player.controlled.velocity = Vector2(0.0, 0.0)
@@ -75,6 +80,7 @@ func _on_merge_area_body_entered(body: Node2D) -> void:
 	position = lerp(position, bubble.position, surface / (surface + bubble.surface))
 	surface += bubble.surface
 	update_surface(1)
+	audio_bubble_join.play()
 
 	if player.controlled == bubble:
 		player.controlled = self

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bpdxao1oh1o1u"]
+[gd_scene load_steps=20 format=3 uid="uid://bpdxao1oh1o1u"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_u7v32"]
 [ext_resource type="Texture2D" uid="uid://ynqrfdvgr7oy" path="res://assets/Bubble/bubble_noface-04.png" id="2_m0o3s"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://ugprp5dq0cul" path="res://assets/animations/bubble_face/bubble_face_01_normal.svg" id="5_t7f1k"]
 [ext_resource type="Texture2D" uid="uid://bvx8jm1re51e6" path="res://assets/Bubble/bubble_noface-04_pop3.png" id="5_vkew7"]
 [ext_resource type="Texture2D" uid="uid://lyjjb6gbku27" path="res://assets/Bubble/bubble_noface-04_pop4.png" id="6_xnhu3"]
+[ext_resource type="AudioStream" uid="uid://dprs8huatuaxk" path="res://assets/sounds/Hmm1.wav" id="11_wrq1v"]
+[ext_resource type="AudioStream" uid="uid://6t6diqk8xkgw" path="res://assets/sounds/Hmm2.wav" id="12_wjghf"]
+[ext_resource type="AudioStream" uid="uid://o6ue8vkh74gv" path="res://assets/sounds/Bubble_split.wav" id="13_wt05k"]
+[ext_resource type="AudioStream" uid="uid://cguql8e4uesuq" path="res://assets/sounds/Bubble_join.wav" id="14_6p5uc"]
+[ext_resource type="AudioStream" uid="uid://bmap7t65kp01c" path="res://assets/sounds/Scream_bloodcurl.wav" id="15_vheej"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3alvk"]
 radius = 64.0
@@ -90,7 +95,7 @@ shape = SubResource("CircleShape2D_3alvk")
 [node name="BubbleAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.160156, 0.160156)
 sprite_frames = SubResource("SpriteFrames_i3p6h")
-animation = &"none"
+animation = &"pop"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.165854, 0.165854)
@@ -114,6 +119,21 @@ shape = SubResource("CircleShape2D_16syt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MergeArea"]
 shape = SubResource("CircleShape2D_16syt")
+
+[node name="Audio_hmm1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_wrq1v")
+
+[node name="Audio_hmm2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_wjghf")
+
+[node name="Audio_Bubble_split" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_wt05k")
+
+[node name="Audio_Bubble_join" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_6p5uc")
+
+[node name="Audio_Bubble_pop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_vheej")
 
 [connection signal="animation_finished" from="BubbleAnimation" to="." method="_on_bubble_animation_animation_finished"]
 [connection signal="animation_looped" from="BubbleAnimation" to="." method="_on_bubble_animation_animation_looped"]

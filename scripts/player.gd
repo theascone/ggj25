@@ -68,6 +68,7 @@ func _input(event: InputEvent) -> void:
 		recently_created_bubbles.append([Time.get_ticks_msec(), bubble])
 		
 		get_node("/root/Root").add_child(bubble)
+		bubble.audio_bubble_split.play()
 	
 	var bubbles = enumerate_bubbles()
 	var idx = index_of_bubble(bubbles, controlled)

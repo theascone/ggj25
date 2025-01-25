@@ -6,6 +6,10 @@ extends CharacterBody2D
 @export var bee_velocity = 100.0
 @export var sting_velocity = 150.0
 
+@onready var audio_summen: AudioStreamPlayer = $Audio_summen
+@onready var audio_sting_1: AudioStreamPlayer = $Audio_sting1
+@onready var audio_sting_2: AudioStreamPlayer = $Audio_sting2
+
 var sting_fired = false
 
 func _ready():
@@ -23,9 +27,13 @@ func _physics_process(delta: float) -> void:
 		if result["collider"] == player.controlled:
 			$AnimatedSprite2D.play("angry")
 			velocity = bee_velocity * dir
+			if audio_summen.playing == false:
+				audio_summen.play()
 			
 			if not sting_fired:
 				#velocity = bee_velocity * dir
+				audio_sting_1.play()
+				audio_sting_2.play()
 				$StingSprite.rotation = (dir * Vector2(-1, 1)).angle_to(Vector2(0, 1))
 				$StingSprite.dir = dir
 				$StingSprite.sting_speed = sting_velocity
