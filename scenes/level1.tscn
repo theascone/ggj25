@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bpdxao1oh1o1u" path="res://scenes/bubble.tscn" id="1_wyawi"]
 [ext_resource type="Texture2D" uid="uid://dkrh610rgjisb" path="res://assets/tilesets/Tileset_basic.png" id="2_cgp5p"]
-[ext_resource type="PackedScene" uid="uid://bin1esr2i0gfc" path="res://scenes/player.tscn" id="2_y6y1y"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_y6y1y"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_5n70l"]
 [ext_resource type="PackedScene" path="res://scenes/wind.tscn" id="3_m6x4c"]
 [ext_resource type="PackedScene" uid="uid://b3n2bfbnun145" path="res://scenes/enemy_stinger.tscn" id="5_olnlm"]
-[ext_resource type="PackedScene" uid="uid://o7jmhtfl8h1k" path="res://scenes/button.tscn" id="7_0kwy5"]
-[ext_resource type="PackedScene" uid="uid://b5i8bra1hq4dw" path="res://scenes/door.tscn" id="8_lt8q6"]
+[ext_resource type="PackedScene" path="res://scenes/button.tscn" id="7_0kwy5"]
+[ext_resource type="PackedScene" path="res://scenes/door.tscn" id="8_lt8q6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsve4"]
 size = Vector2(152, 664)

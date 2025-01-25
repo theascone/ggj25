@@ -61,6 +61,9 @@ animation = &"angry"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-20, -58, -46, -21, -47, -5, -32, 23, 0, 54, 32, 25, 47, -5, 46, -20, 22, -58)
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(2, 43, 26, 18, 39, -2, 41, -18, 16, -45, -16, -45, -33, -20, -37, -9, -25, 13)
+
 [connection signal="timeout" from="StingSprite/lifetime" to="Sprite2D" method="_on_lifetime_timeout"]
 [connection signal="body_entered" from="StingSprite/Area2D" to="StingSprite" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
