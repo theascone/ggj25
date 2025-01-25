@@ -85,6 +85,10 @@ func _input(event: InputEvent) -> void:
 
 func handle_popped(bubble: Bubble) -> void:
 	print("handle_popped")
+
+	if bubble != controlled:
+		return
+
 	var bubbles = enumerate_bubbles()
 	if bubbles.size() == 1:
 		print("game over")

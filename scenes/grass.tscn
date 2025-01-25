@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5k02g38am714"]
+
+[ext_resource type="Script" path="res://scripts/grass.gd" id="1_qtipv"]
+[ext_resource type="Texture2D" uid="uid://ceestpwurecdv" path="res://assets/tilesets/grass_single.png" id="1_wm2pl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kbxlc"]
+radius = 104.0
+
+[node name="Grass" type="Area2D"]
+script = ExtResource("1_qtipv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -72)
+texture = ExtResource("1_wm2pl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -72)
+shape = SubResource("CircleShape2D_kbxlc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
