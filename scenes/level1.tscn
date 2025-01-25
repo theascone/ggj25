@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://bwv0gxs8blh0l"]
+[gd_scene load_steps=14 format=4 uid="uid://bwv0gxs8blh0l"]
 
 [ext_resource type="PackedScene" uid="uid://bpdxao1oh1o1u" path="res://scenes/bubble.tscn" id="1_wyawi"]
 [ext_resource type="Texture2D" uid="uid://dkrh610rgjisb" path="res://assets/tilesets/Tileset_basic.png" id="2_cgp5p"]
 [ext_resource type="PackedScene" path="res://scenes/player.tscn" id="2_y6y1y"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_5n70l"]
-[ext_resource type="PackedScene" uid="uid://ca437gt647nyg" path="res://scenes/wind.tscn" id="3_m6x4c"]
+
+[ext_resource type="PackedScene" uid="uid://brfiglux2e12a" path="res://scenes/wind.tscn" id="3_m6x4c"]
 [ext_resource type="PackedScene" uid="uid://b3n2bfbnun145" path="res://scenes/enemy_stinger.tscn" id="5_olnlm"]
 [ext_resource type="PackedScene" uid="uid://61jh8nlpu1w3" path="res://scenes/button.tscn" id="7_0kwy5"]
 [ext_resource type="PackedScene" uid="uid://b5i8bra1hq4dw" path="res://scenes/door.tscn" id="8_lt8q6"]
@@ -12,6 +13,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsve4"]
 size = Vector2(272, 1400)
+
+[sub_resource type="Curve2D" id="Curve2D_gyuj8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -568, 576, 0, 0, 0, 0, -296, 576)
+}
+point_count = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ycmcb"]
 texture = ExtResource("2_cgp5p")
@@ -461,6 +468,9 @@ acceleration = 200.0
 position = Vector2(-432, -124)
 shape = SubResource("RectangleShape2D_gsve4")
 
+[node name="Path2D" type="Path2D" parent="Wind"]
+curve = SubResource("Curve2D_gyuj8")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_5n70l")
 
@@ -497,17 +507,17 @@ position = Vector2(2320, 392)
 [node name="Door3" parent="." instance=ExtResource("8_lt8q6")]
 position = Vector2(3736, 192)
 
+[node name="Grass4" parent="." instance=ExtResource("9_j6dut")]
+position = Vector2(1408, 624)
+
+[node name="Grass3" parent="." instance=ExtResource("9_j6dut")]
+position = Vector2(1568, 624)
+
+[node name="Grass2" parent="." instance=ExtResource("9_j6dut")]
+position = Vector2(1224, 624)
+
 [node name="Grass" parent="." instance=ExtResource("9_j6dut")]
 position = Vector2(1040, 624)
-
-[node name="Grass" parent="Grass" instance=ExtResource("9_j6dut")]
-position = Vector2(184, 0)
-
-[node name="Grass" parent="Grass/Grass" instance=ExtResource("9_j6dut")]
-position = Vector2(184, 0)
-
-[node name="Grass" parent="Grass/Grass/Grass" instance=ExtResource("9_j6dut")]
-position = Vector2(160, 0)
 
 [connection signal="status_change" from="Button1" to="Door1" method="change_state"]
 [connection signal="status_change" from="Button2" to="Door2" method="change_state"]

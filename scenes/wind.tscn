@@ -1,20 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca437gt647nyg"]
+[gd_scene load_steps=3 format=3 uid="uid://brfiglux2e12a"]
 
 [ext_resource type="Script" path="res://scripts/wind.gd" id="1_plwbm"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7s61"]
-size = Vector2(20, 56.5)
+[ext_resource type="PackedScene" uid="uid://cncbq8xdur7y6" path="res://scenes/gust.tscn" id="2_7x2xd"]
 
 [node name="Wind" type="Area2D"]
 collision_mask = 5
 script = ExtResource("1_plwbm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.25)
-shape = SubResource("RectangleShape2D_w7s61")
+gust_scene = ExtResource("2_7x2xd")
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.6
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
