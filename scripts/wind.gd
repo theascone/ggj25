@@ -33,3 +33,15 @@ func _on_body_exited(body: Node2D) -> void:
 	if bubble == null:
 		return
 	active_bubbles.erase(bubble)
+
+func wind_sprite_spawner(direction: int) -> void:
+	Rect2  = $CollisionShape2D.shape.get_rect()
+	print()
+	if direction == 1:
+		var spawn_vector = Vector2()
+		pass
+		
+
+
+func _on_spawn_timer_timeout() -> void:
+	wind_sprite_spawner(1)
