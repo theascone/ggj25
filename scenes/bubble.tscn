@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bpdxao1oh1o1u"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_u7v32"]
-[ext_resource type="Texture2D" uid="uid://dj4bn25660y18" path="res://assets/Bubble/bubble_noface.svg" id="2_epu37"]
+[ext_resource type="Texture2D" uid="uid://ynqrfdvgr7oy" path="res://assets/Bubble/bubble_noface-04.png" id="2_m0o3s"]
 [ext_resource type="Texture2D" uid="uid://b53f8tybqj58r" path="res://assets/animations/bubble_face/bubble_face_02_wink.svg" id="3_srrl2"]
 [ext_resource type="Texture2D" uid="uid://csgpwj8r7jiru" path="res://assets/animations/bubble_face/bubble_face_04_dead.svg" id="4_vnl8q"]
 [ext_resource type="Texture2D" uid="uid://7v2pj1t1onpb" path="res://assets/animations/bubble_face/bubble_face_03_blush.svg" id="4_vyo77"]
@@ -14,7 +14,7 @@ radius = 64.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_epu37")
+"texture": ExtResource("2_m0o3s")
 }],
 "loop": true,
 "name": &"default",
@@ -71,7 +71,6 @@ shape = SubResource("CircleShape2D_3alvk")
 [node name="BubbleAnimation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.160156, 0.160156)
 sprite_frames = SubResource("SpriteFrames_i3p6h")
-frame_progress = 0.430542
 
 [node name="FaceAnimation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
