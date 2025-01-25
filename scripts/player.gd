@@ -71,7 +71,12 @@ func handle_popped(bubble: Bubble) -> void:
 	var bubbles = enumerate_bubbles()
 	if bubbles.size() == 1:
 		print("game over")
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		var scene = preload("res://scenes/game_over.tscn")
+		var instance = scene.instantiate()
+		get_node("/root/Root/Camera2D").add_child(instance)
+		#get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		#OS.delay_msec(2000)
+		#get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		controlled = null
 		return
 	var idx = index_of_bubble(bubbles, controlled)
