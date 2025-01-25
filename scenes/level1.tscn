@@ -440,6 +440,7 @@ sources/1 = SubResource("TileSetAtlasSource_ycmcb")
 [node name="Root" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("controlled") instance=ExtResource("2_y6y1y")]
+acceleration = 1200.0
 controlled = NodePath("../Bubble")
 bubble_scene = ExtResource("1_wyawi")
 
@@ -454,3 +455,4 @@ tile_map_data = PackedByteArray("AAD//wEAAQAJAAIAAAD//wAAAQAJAAIAAAD/////AQAJAAI
 tile_set = SubResource("TileSet_3y5wf")
 
 [node name="Bubble" parent="." instance=ExtResource("1_wyawi")]
+position = Vector2(-368, 48)
