@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bwv0gxs8blh0l"]
+[gd_scene load_steps=15 format=3 uid="uid://bwv0gxs8blh0l"]
 
 [ext_resource type="PackedScene" uid="uid://bpdxao1oh1o1u" path="res://scenes/bubble.tscn" id="1_wyawi"]
 [ext_resource type="PackedScene" uid="uid://bin1esr2i0gfc" path="res://scenes/player.tscn" id="2_y6y1y"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://b5k02g38am714" path="res://scenes/grass.tscn" id="9_j6dut"]
 [ext_resource type="PackedScene" path="res://scenes/win_object.tscn" id="10_n1kf8"]
 [ext_resource type="Texture2D" uid="uid://cep5o05al58cb" path="res://assets/levels/level1.png" id="11_1m87a"]
+[ext_resource type="Texture2D" uid="uid://b6lablefulfr8" path="res://assets/ui/hint_split.png" id="11_yuy5c"]
+[ext_resource type="Texture2D" uid="uid://df7ee71unkk5w" path="res://assets/ui/hint_switch.png" id="12_gdeki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsve4"]
 size = Vector2(384, 1400)
@@ -48,7 +50,7 @@ position = Vector2(-424, 336)
 surface = 15.0
 
 [node name="Stinger" parent="." instance=ExtResource("5_olnlm")]
-position = Vector2(24, -296)
+position = Vector2(3520, -216)
 attack_area = 600.0
 sting_velocity = 300.0
 
@@ -100,6 +102,15 @@ polygon = PackedVector2Array(54.7292, 125.765, 123.857, 114.244, 169.943, 114.24
 position = Vector2(1698, -95.3269)
 scale = Vector2(0.694364, 0.694364)
 texture = ExtResource("11_1m87a")
+
+[node name="HintSplit" type="Sprite2D" parent="."]
+position = Vector2(528, -32)
+scale = Vector2(0.910256, 0.910256)
+texture = ExtResource("11_yuy5c")
+
+[node name="HintSwitch" type="Sprite2D" parent="."]
+position = Vector2(2040, 144)
+texture = ExtResource("12_gdeki")
 
 [connection signal="status_change" from="Button1" to="Door1" method="change_state"]
 [connection signal="status_change" from="Button2" to="Door2" method="change_state"]
