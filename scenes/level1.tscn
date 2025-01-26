@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/camera.gd" id="3_5n70l"]
 [ext_resource type="PackedScene" uid="uid://brfiglux2e12a" path="res://scenes/wind.tscn" id="3_m6x4c"]
 [ext_resource type="PackedScene" uid="uid://b3n2bfbnun145" path="res://scenes/enemy_stinger.tscn" id="5_olnlm"]
-[ext_resource type="PackedScene" uid="uid://61jh8nlpu1w3" path="res://scenes/button.tscn" id="7_0kwy5"]
+[ext_resource type="PackedScene" uid="uid://o7jmhtfl8h1k" path="res://scenes/button.tscn" id="7_0kwy5"]
 [ext_resource type="PackedScene" uid="uid://b5i8bra1hq4dw" path="res://scenes/door.tscn" id="8_lt8q6"]
 [ext_resource type="PackedScene" uid="uid://b5k02g38am714" path="res://scenes/grass.tscn" id="9_j6dut"]
 
@@ -482,11 +482,12 @@ tile_map_data = PackedByteArray("AAD//wEAAQAJAAIAAAD//wAAAQAJAAIAAAD/////AQAJAAI
 tile_set = SubResource("TileSet_3y5wf")
 
 [node name="Bubble" parent="." instance=ExtResource("1_wyawi")]
-position = Vector2(1160, 112)
+position = Vector2(-408, 224)
 surface = 15.0
 
 [node name="Stinger" parent="." instance=ExtResource("5_olnlm")]
 position = Vector2(-264, -168)
+attack_area = 600.0
 
 [node name="Button1" parent="." instance=ExtResource("7_0kwy5")]
 position = Vector2(2216, 392)

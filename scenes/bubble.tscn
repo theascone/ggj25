@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://6t6diqk8xkgw" path="res://assets/sounds/Hmm2.wav" id="12_wjghf"]
 [ext_resource type="AudioStream" uid="uid://o6ue8vkh74gv" path="res://assets/sounds/Bubble_split.wav" id="13_wt05k"]
 [ext_resource type="AudioStream" uid="uid://cguql8e4uesuq" path="res://assets/sounds/Bubble_join.wav" id="14_6p5uc"]
-[ext_resource type="AudioStream" uid="uid://bmap7t65kp01c" path="res://assets/sounds/Scream_bloodcurl.wav" id="15_vheej"]
+[ext_resource type="AudioStream" uid="uid://sima2xdua6f6" path="res://assets/sounds/Bubble_pop1.wav" id="15_5j1qa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3alvk"]
 radius = 64.0
@@ -133,7 +133,7 @@ stream = ExtResource("13_wt05k")
 stream = ExtResource("14_6p5uc")
 
 [node name="Audio_Bubble_pop" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_vheej")
+stream = ExtResource("15_5j1qa")
 
 [connection signal="animation_finished" from="BubbleAnimation" to="." method="_on_bubble_animation_animation_finished"]
 [connection signal="animation_looped" from="BubbleAnimation" to="." method="_on_bubble_animation_animation_looped"]

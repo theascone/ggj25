@@ -6,7 +6,6 @@
 [node name="Wind" type="Area2D"]
 collision_mask = 5
 script = ExtResource("1_plwbm")
-
 gust_scene = ExtResource("2_7x2xd")
 
 [node name="SpawnTimer" type="Timer" parent="."]
