@@ -10,9 +10,12 @@ signal status_change(status)
 
 var active = false
 
+const green = Color("80ff66")
+const red = Color("ff6666")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Polygon2D.color = Color(200, 0, 0)
+	$Polygon2D.color = red
 	status_change.emit(active)
 
 
@@ -34,7 +37,7 @@ func _physics_process(delta: float) -> void:
 		status_change.emit(active)
 		if active:
 			audio_button_press.play()
-			$Polygon2D.color = Color(0, 200, 0)
+			$Polygon2D.color = green
 		else:
 			audio_button_release.play()
-			$Polygon2D.color = Color(200, 0, 0)
+			$Polygon2D.color = red
