@@ -96,6 +96,7 @@ func handle_popped(bubble: Bubble) -> void:
 		var scene = preload("res://scenes/game_over.tscn")
 		var instance = scene.instantiate()
 		get_node("/root/Root/Camera2D").add_child(instance)
+		instance.z_index = 100
 		controlled = null
 		return
 	var idx = index_of_bubble(bubbles, controlled)

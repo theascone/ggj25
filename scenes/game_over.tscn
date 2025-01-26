@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://brbn1dmcy7dpg"]
+[gd_scene load_steps=3 format=3 uid="uid://brbn1dmcy7dpg"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_yiewg"]
+[ext_resource type="Texture2D" uid="uid://c0pg6gvq3v6k7" path="res://assets/ui/game_lost.png" id="2_qc6uc"]
 
 [node name="GameOver" type="CenterContainer"]
 anchors_preset = 15
@@ -19,5 +20,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="LOSE_SCREEN_Sprite" type="Sprite2D" parent="."]
+position = Vector2(4, -2)
+texture = ExtResource("2_qc6uc")
 
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_timer_timeout"]
