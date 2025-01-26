@@ -15,6 +15,7 @@ shape = SubResource("RectangleShape2D_qldv4")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 scale = Vector2(1, 1.1875)
+color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-16, -64, -16, 64, 16, 64, 16, -64)
 
 [node name="Audio_Door_close" type="AudioStreamPlayer" parent="."]
