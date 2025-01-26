@@ -44,7 +44,7 @@ curve = SubResource("Curve2D_gyuj8")
 script = ExtResource("3_5n70l")
 
 [node name="Bubble" parent="." instance=ExtResource("1_wyawi")]
-position = Vector2(3048, 384)
+position = Vector2(-424, 336)
 surface = 15.0
 
 [node name="Stinger" parent="." instance=ExtResource("5_olnlm")]
