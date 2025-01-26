@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bwv0gxs8blh0l"]
+[gd_scene load_steps=15 format=4 uid="uid://bwv0gxs8blh0l"]
 
 [ext_resource type="PackedScene" uid="uid://bpdxao1oh1o1u" path="res://scenes/bubble.tscn" id="1_wyawi"]
 [ext_resource type="Texture2D" uid="uid://dkrh610rgjisb" path="res://assets/tilesets/Tileset_basic.png" id="2_cgp5p"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://o7jmhtfl8h1k" path="res://scenes/button.tscn" id="7_0kwy5"]
 [ext_resource type="PackedScene" uid="uid://b5i8bra1hq4dw" path="res://scenes/door.tscn" id="8_lt8q6"]
 [ext_resource type="PackedScene" uid="uid://b5k02g38am714" path="res://scenes/grass.tscn" id="9_j6dut"]
+[ext_resource type="PackedScene" uid="uid://j485px4ima6q" path="res://scenes/win_object.tscn" id="10_n1kf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsve4"]
 size = Vector2(272, 1400)
@@ -486,7 +487,7 @@ position = Vector2(-408, 224)
 surface = 15.0
 
 [node name="Stinger" parent="." instance=ExtResource("5_olnlm")]
-position = Vector2(-264, -168)
+position = Vector2(3389, -193)
 attack_area = 600.0
 
 [node name="Button1" parent="." instance=ExtResource("7_0kwy5")]
@@ -518,6 +519,9 @@ position = Vector2(1224, 624)
 
 [node name="Grass" parent="." instance=ExtResource("9_j6dut")]
 position = Vector2(1040, 624)
+
+[node name="win_object" parent="." instance=ExtResource("10_n1kf8")]
+position = Vector2(3958, 201)
 
 [connection signal="status_change" from="Button1" to="Door1" method="change_state"]
 [connection signal="status_change" from="Button2" to="Door2" method="change_state"]
