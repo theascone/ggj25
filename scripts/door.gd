@@ -12,7 +12,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
 func change_state(state):
 	$CollisionShape2D.set_deferred("disabled", state)
 	$Polygon2D.visible = !state

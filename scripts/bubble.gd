@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var audio_bubble_split: AudioStreamPlayer = $Audio_Bubble_split
 @onready var audio_bubble_join: AudioStreamPlayer = $Audio_Bubble_join
 @onready var audio_bubble_pop: AudioStreamPlayer = $Audio_Bubble_pop
+@onready var audio_bubble_move_2: AudioStreamPlayer = $Audio_Bubble_move2
+@onready var audio_bubble_move_1: AudioStreamPlayer = $Audio_Bubble_move1
 
 var not_dead = true
 
@@ -30,7 +32,8 @@ func _physics_process(delta: float) -> void:
 	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity += Vector2(0.0, sin(Time.get_ticks_msec()*sine_frequency))
-
+	if audio_bubble_move_1.playing == false:
+		audio_bubble_move_1.play()
 	velocity = lerp(velocity, Vector2(0.0, 0.0), dampening * delta)
 
 	$FaceAnimation.offset.x += 0.1*clampf(velocity.x, -25.0, 25.0)
@@ -90,5 +93,6 @@ func _on_merge_area_body_entered(body: Node2D) -> void:
 
 func _on_bubble_animation_animation_looped() -> void:
 	var player = get_node("/root/Root/Player")
-	player.handle_popped(self)
+	if player != null:
+		player.handle_popped(self)
 	queue_free()

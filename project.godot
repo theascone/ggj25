@@ -62,7 +62,8 @@ switch_right={
 
 [physics]
 
-2d/default_gravity=98.0
+3d/default_gravity=98.0
+2d/default_gravity="98.0"
 
 [rendering]
 

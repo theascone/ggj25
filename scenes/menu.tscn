@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3m8ufbwq8wb1"]
+[gd_scene load_steps=5 format=3 uid="uid://d3m8ufbwq8wb1"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_nlaqa"]
+[ext_resource type="Texture2D" uid="uid://dchdu07fkphrn" path="res://assets/ui/title_bg.png" id="2_2dush"]
+[ext_resource type="PackedScene" uid="uid://bpdxao1oh1o1u" path="res://scenes/bubble.tscn" id="3_12che"]
+[ext_resource type="PackedScene" uid="uid://b5k02g38am714" path="res://scenes/grass.tscn" id="4_15aka"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,6 +14,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nlaqa")
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 323.5)
+scale = Vector2(0.6, 0.599074)
+texture = ExtResource("2_2dush")
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -18,12 +26,36 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -29.0
-offset_right = 60.0
-offset_bottom = 29.0
+offset_left = -519.0
+offset_top = -273.0
+offset_right = -419.0
+offset_bottom = -221.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start"
 
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -519.0
+offset_top = -198.0
+offset_right = -419.0
+offset_bottom = -146.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit
+"
+
+[node name="Bubble" parent="." instance=ExtResource("3_12che")]
+position = Vector2(884, -154)
+
+[node name="Grass" parent="." instance=ExtResource("4_15aka")]
+visible = false
+position = Vector2(864, 667)
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

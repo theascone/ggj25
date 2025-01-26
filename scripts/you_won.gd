@@ -11,9 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_button_pressed() -> void:
-	pass
-
-
-func _on_timer_timeout() -> void:
+func _on_game_over_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")

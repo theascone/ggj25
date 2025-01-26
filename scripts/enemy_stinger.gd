@@ -1,10 +1,9 @@
 extends CharacterBody2D
 
-
 @export var SPEED = 300.0
 @export var attack_area = 400.0
-@export var bee_velocity = 100.0
-@export var sting_velocity = 150.0
+@export var bee_velocity = 200.0
+@export var sting_velocity = 500.0
 
 @onready var audio_summen: AudioStreamPlayer = $Audio_summen
 @onready var audio_sting_1: AudioStreamPlayer = $Audio_sting1
@@ -20,9 +19,10 @@ func _physics_process(delta: float) -> void:
 	var player = get_node("/root/Root/Player")
 	if player.controlled == null:
 		return
-	var dir = (player.controlled.position - position).normalized() 
-	var query = PhysicsRayQueryParameters2D.create(position, dir * attack_area)
+	var dir = (player.controlled.position - position).normalized()
+	var query = PhysicsRayQueryParameters2D.create(position, position + dir * attack_area)
 	var result = space_state.intersect_ray(query)
+	print(result)
 	if result.size() != 0:
 		if result["collider"] == player.controlled:
 			$AnimatedSprite2D.play("angry")
@@ -41,6 +41,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			$AnimatedSprite2D.play("regular_smile")
 			velocity = Vector2(0.0, 0.0)
+	else:
+		$AnimatedSprite2D.play("regular_smile")
+		velocity = Vector2(0, 0)
 			
 	move_and_slide()
 
