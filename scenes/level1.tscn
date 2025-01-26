@@ -12,11 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://cep5o05al58cb" path="res://assets/levels/level1.png" id="11_1m87a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsve4"]
-size = Vector2(272, 1400)
+size = Vector2(384, 1400)
 
 [sub_resource type="Curve2D" id="Curve2D_gyuj8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -568, 576, 0, 0, 0, 0, -296, 576)
+"points": PackedVector2Array(0, 0, 0, 0, -616, 576, 0, 0, 0, 0, -232, 576)
 }
 point_count = 2
 
@@ -31,9 +31,10 @@ bubble_scene = ExtResource("1_wyawi")
 position = Vector2(3144, 0)
 direction = Vector2(0, -1)
 acceleration = 200.0
+wind_timeout = 6
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wind"]
-position = Vector2(-432, -124)
+[node name="Area" type="CollisionShape2D" parent="Wind"]
+position = Vector2(-424, -124)
 shape = SubResource("RectangleShape2D_gsve4")
 
 [node name="Path2D" type="Path2D" parent="Wind"]
@@ -43,11 +44,11 @@ curve = SubResource("Curve2D_gyuj8")
 script = ExtResource("3_5n70l")
 
 [node name="Bubble" parent="." instance=ExtResource("1_wyawi")]
-position = Vector2(-408, 224)
+position = Vector2(3048, 384)
 surface = 15.0
 
 [node name="Stinger" parent="." instance=ExtResource("5_olnlm")]
-position = Vector2(3389, -193)
+position = Vector2(1392, -152)
 attack_area = 600.0
 sting_velocity = 50.0
 
@@ -82,7 +83,7 @@ position = Vector2(1224, 624)
 position = Vector2(1040, 624)
 
 [node name="win_object" parent="." instance=ExtResource("10_n1kf8")]
-position = Vector2(-104, 328)
+position = Vector2(3968, 192)
 next_scene = "res://scenes/level2.tscn"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

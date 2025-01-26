@@ -42,3 +42,8 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_d1ae1")
 frame_progress = 0.951469
 script = ExtResource("8_m7wpd")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

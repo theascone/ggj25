@@ -29,8 +29,9 @@ bubble_scene = ExtResource("2_ms1ho")
 [node name="Wind" parent="." instance=ExtResource("3_ab5f5")]
 position = Vector2(3232, -21)
 acceleration = 200.0
+wind_timeout = 7
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wind"]
+[node name="Area" type="CollisionShape2D" parent="Wind"]
 position = Vector2(-2291, -1348.5)
 shape = SubResource("RectangleShape2D_gsve4")
 
