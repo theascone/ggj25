@@ -75,3 +75,4 @@ switch_right={
 
 textures/vram_compression/import_etc2_astc=true
 textures/webp_compression/lossless_compression_factor=0.0
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)

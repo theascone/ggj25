@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://o7jmhtfl8h1k" path="res://scenes/button.tscn" id="7_0kwy5"]
 [ext_resource type="PackedScene" uid="uid://b5i8bra1hq4dw" path="res://scenes/door.tscn" id="8_lt8q6"]
 [ext_resource type="PackedScene" uid="uid://b5k02g38am714" path="res://scenes/grass.tscn" id="9_j6dut"]
-[ext_resource type="PackedScene" uid="uid://j485px4ima6q" path="res://scenes/win_object.tscn" id="10_n1kf8"]
+[ext_resource type="PackedScene" path="res://scenes/win_object.tscn" id="10_n1kf8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsve4"]
 size = Vector2(272, 1400)
