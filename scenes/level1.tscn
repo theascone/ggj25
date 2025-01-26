@@ -48,7 +48,7 @@ position = Vector2(3048, 384)
 surface = 15.0
 
 [node name="Stinger" parent="." instance=ExtResource("5_olnlm")]
-position = Vector2(1392, -152)
+position = Vector2(3408, -176)
 attack_area = 600.0
 sting_velocity = 50.0
 
