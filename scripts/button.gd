@@ -1,13 +1,13 @@
-extends Area2D
+extends Node2D
 
 @export var min_surface = 1
+@export var shape: Shape2D
 
 @onready var audio_button_press: AudioStreamPlayer = $Audio_Button_Press
 @onready var audio_button_release: AudioStreamPlayer = $Audio_Button_Release
 
 signal status_change(status)
 
-var bubbles = []
 var active = false
 
 # Called when the node enters the scene tree for the first time.
@@ -15,19 +15,18 @@ func _ready() -> void:
 	status_change.emit(active)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	maintain_button()
-	
-func any_bubble():
-	for bubble in bubbles:
-		if bubble.surface >= min_surface:
-			return true
-	return false
-	
-func maintain_button():
-	var should_activate = any_bubble()
-	
+func _physics_process(delta: float) -> void:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsShapeQueryParameters2D.new()
+	query.shape = shape
+	query.collision_mask = 1
+	query.transform = transform
+	var results = space_state.intersect_shape(query)
+	var should_activate = false
+	for result in results:
+		var bubble := result["collider"] as Bubble
+		if bubble != null and bubble.surface >= min_surface:
+			should_activate = true
 	if should_activate != active:
 		active = should_activate
 		status_change.emit(active)
@@ -35,17 +34,3 @@ func maintain_button():
 			audio_button_press.play()
 		else:
 			audio_button_release.play()
-
-func _on_body_entered(body: Node2D) -> void:
-	var bubble := body as Bubble
-	if bubble == null:
-		return
-	bubbles.append(bubble)
-	maintain_button()	
-
-func _on_body_exited(body: Node2D) -> void:
-	var bubble := body as Bubble
-	if bubble == null or bubble.surface < min_surface:
-		return
-	bubbles.erase(bubble)
-	maintain_button()
