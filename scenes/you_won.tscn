@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3schk2qm1djn"]
+[gd_scene load_steps=3 format=3 uid="uid://dvym7nlilf4j7"]
 
 [ext_resource type="Script" path="res://scripts/you_won.gd" id="1_2ok50"]
 [ext_resource type="Texture2D" uid="uid://c0gua5bwt05jr" path="res://assets/ui/game_won.png" id="2_prwqx"]

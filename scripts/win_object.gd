@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var next_scene = "res://scenes/menu.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,5 +15,6 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	var scene = preload("res://scenes/you_won.tscn")
 	var instance = scene.instantiate()
+	instance.next_scene = next_scene
 	get_node("/root/Root/Camera2D").add_child(instance)
 	instance.z_index = 100

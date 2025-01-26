@@ -82,7 +82,8 @@ position = Vector2(1224, 624)
 position = Vector2(1040, 624)
 
 [node name="win_object" parent="." instance=ExtResource("10_n1kf8")]
-position = Vector2(3958, 201)
+position = Vector2(-104, 328)
+next_scene = "res://scenes/level2.tscn"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(1698, -95.3269)
