@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 				$StingSprite.rotation = (dir * Vector2(-1, 1)).angle_to(Vector2(0, 1))
 				$StingSprite.dir = dir
 				$StingSprite.sting_speed = sting_velocity
+				$StingSprite.reparent(get_node("/root/Root/"))
 				sting_fired = true
 		else:
 			$AnimatedSprite2D.play("regular_smile")
