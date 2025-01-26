@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://j485px4ima6q"]
+[gd_scene load_steps=3 format=3 uid="uid://2ml4fnft5bea"]
 
 [ext_resource type="Script" path="res://scripts/win_object.gd" id="1_gguvj"]
+[ext_resource type="Texture2D" uid="uid://df16u4i21ce3t" path="res://assets/soap/soap.png" id="2_siru0"]
 
 [node name="win_object" type="Area2D"]
 script = ExtResource("1_gguvj")
@@ -8,12 +9,17 @@ script = ExtResource("1_gguvj")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 scale = Vector2(1.33221, 1.33221)
 color = Color(0.151308, 0.883916, 0.900654, 1)
 polygon = PackedVector2Array(0, -19, 15, -4, 19, 0, 0, 19, -18, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(1.34624, 1.34624)
-polygon = PackedVector2Array(0, -19, -18, 0, 0, 19, 19, 0)
+polygon = PackedVector2Array(-11.885, -23.7699, -23.7699, 11.885, 17.8274, 23.7699, 23.7699, -11.885)
+
+[node name="Soap" type="Sprite2D" parent="."]
+scale = Vector2(0.124272, 0.124272)
+texture = ExtResource("2_siru0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

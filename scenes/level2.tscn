@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b5i8bra1hq4dw" path="res://scenes/door.tscn" id="8_k3xr5"]
 [ext_resource type="Script" path="res://scripts/latch.gd" id="9_uscrk"]
 [ext_resource type="Texture2D" uid="uid://cf0d05478jcsy" path="res://assets/levels/level2.png" id="10_2ks85"]
-[ext_resource type="PackedScene" path="res://scenes/win_object.tscn" id="10_t7kjo"]
+[ext_resource type="PackedScene" uid="uid://2ml4fnft5bea" path="res://scenes/win_object.tscn" id="10_t7kjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsve4"]
 size = Vector2(1426, 1105)
